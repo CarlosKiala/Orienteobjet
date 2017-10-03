@@ -1,3 +1,4 @@
+import json
 
 class Agent():
 
@@ -7,30 +8,25 @@ class Agent():
 
    
 
-    def __init__(self,agent_attributes):
+    def __init__(self,**agent_attributes):
 
         for attr_name, attr_value in agent_attributes.items():
 
             setattr(self,attr_name,attr_value)
 
 
+def main():
+ 
+    for agents_attributes in json.load(open("agents-100k.json")):
 
-
-
+        agent = Agent(**agents_attributes)
         
-agent_attributes = {"neuroticism": -0.0739192627121713, "language": "Shona", "latitude": -19.922097800281783,
- "country_tld": "zw", "age": 12, "income": 333, "longitude": 29.798455535838603,
- "sex": "Male", "religion": "syncretic", "extraversion": 1.051833688742943,
- "date_of_birth": "2005-01-10", "": 0.1441229877537559,"agreeableness": 0.1441229877537559,
- "id_str": "LB3-3Cl", "conscientiousness": 0.2419104411765549,
- "internet": 'false', "country_name": "Zimbabwe", "openness": -0.024607605122172617,
- "id": 6636726630}
+        print(agent.agreeableness)
+
         
 
 
             
-agent = Agent(agent_attributes)
 
-print(agent.internet)
-
+main()
 
